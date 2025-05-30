@@ -1,20 +1,13 @@
 from setuptools import setup, find_packages
 
+with open("requirements.txt") as f:
+    requirements = f.read().splitlines()
+
 setup(
     name='eyetracker',
     version='0.1.0',
+    author='lisa Bauer',
+    description='Zebrafish eye tracking package',
     packages=find_packages(),
-    install_requires=[
-        'numpy',
-        'opencv-python',
-        'matplotlib',
-        'Pillow',
-        'scipy',
-        'mpl-point-clicker',
-    ],
-    entry_points={
-        'console_scripts': [
-            'eyetracker-run = scripts.run_analysis:main',
-        ],
-    },
+    install_requires=requirements
 )

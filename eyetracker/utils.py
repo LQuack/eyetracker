@@ -6,12 +6,6 @@ import morphsnakes as ms
 from eyetracker.morphsnakes_custom import ellipsoid_level_set
 
 
-# def preprocess_eye_image(image, brightness_modifier):
-#     image = image[::10, ::10]
-#     brightener = ImageEnhance.Brightness(Image.fromarray(image))
-#     return np.array(brightener.enhance(float(brightness_modifier)))
-
-
 def binarise_with_morphosnakes(img, semi_axis, morph_iteration_number):
     init_ls = ellipsoid_level_set(img.shape, semi_axis=semi_axis)
     m = ms.morphological_chan_vese(img, iterations=morph_iteration_number,

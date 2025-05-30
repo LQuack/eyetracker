@@ -2,13 +2,10 @@ import os
 import time
 import cv2
 import numpy as np
-from scipy import signal
 from PIL import Image, ImageEnhance
 import matplotlib.pyplot as plt
 from mpl_point_clicker import clicker
 import concurrent.futures
-
-from setuptools.sandbox import save_path
 
 from eyetracker.utils import binarise_with_morphosnakes, calc_theta_centroid
 
