@@ -5,3 +5,4 @@ mpl_point_clicker
 morphsnakes~=2.0.1
 pillow~=10.4.0
 opencv-python~=4.8.1.78
+scipy
