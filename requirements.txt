@@ -4,5 +4,5 @@ setuptools>=60
 mpl_point_clicker
 morphsnakes>=2.0.0
 pillow>=9.0
-opencv-python>=4.5
+opencv-python>=4.8.1.78
 scipy>=1.6

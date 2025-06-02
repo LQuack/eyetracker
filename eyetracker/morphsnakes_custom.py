@@ -5,7 +5,6 @@ Modified circle_level_set function from morphsnakes package (https://pypi.org/pr
 import numpy as np
 
 
-
 def ellipsoid_level_set(image_shape, center=None, semi_axis=None):
     """Create an ellipsoid level set with binary values.
 
