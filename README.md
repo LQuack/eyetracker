@@ -23,7 +23,7 @@ pip install -e .
 
 ![Overview](examples/Example_screenshot.png)
 
-*This eyetracker requires you to have a view similar to the one above. Contrast and resolution can be a lot worse and it should still run quite well.*
+*This eyetracker requires you to have a view similar to the one above. Contrast and resolution can be a lot worse, and it should still run quite well.*
 
 ---
 
