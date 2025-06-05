@@ -4,10 +4,14 @@ import cv2
 import numpy as np
 from PIL import Image, ImageEnhance
 import matplotlib.pyplot as plt
+import matplotlib
 from mpl_point_clicker import clicker
 import concurrent.futures
 
 from eyetracker.utils import binarise_with_morphosnakes, calc_theta_centroid
+
+
+matplotlib.use('Qt5Agg')  # in case user has non-interactive backend
 
 
 class EyeTracker:
