@@ -3,9 +3,11 @@ import time
 import cv2
 import numpy as np
 from PIL import Image, ImageEnhance
+import matplotlib as mpl
 import matplotlib.pyplot as plt
 from mpl_point_clicker import clicker
 import concurrent.futures
+mpl.use('TkAgg')
 
 from eyetracker.utils import binarise_with_morphosnakes, calc_theta_centroid
 
@@ -449,6 +451,7 @@ def main():
 
     except Exception as e:
         print(f"An error occurred during the analysis: {e}")
+        traceback.print_exc()
 
 
 if __name__ == "__main__":
