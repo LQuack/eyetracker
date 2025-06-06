@@ -251,7 +251,7 @@ class EyeTracker:
         failed_frames = []
 
         batch_size = 1000
-        max_workers = 6
+        max_workers = 6  # TODO loop through different numbers of workers to find ideal number
         checkpoints = {25: False, 50: False, 75: False, 90: False, 100: False}
 
         frame_index = 0
@@ -339,7 +339,7 @@ class EyeTracker:
             'brightness_modifier': self.brightness_modifier,
             'framecount': framecount,
             'failed_frames': failed_frames,
-            'framerate': self.cap.get(cv2.CAP_PROP_FPS)
+            'framerate': self.fps
         })
 
         self.eyetrack_data = {
