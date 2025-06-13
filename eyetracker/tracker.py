@@ -97,14 +97,20 @@ class EyeTracker:
             print('starting image sub-selection')
             fig, ax = plt.subplots(constrained_layout=True)
             ax.imshow(video_frame, cmap='Greys_r', vmin=0, vmax=100)
-            klicky = clicker(ax, ['midline', 'left_eye', 'right_eye'], markers=['o', 'x', '*'])
+            klicky = clicker(ax, ['front_midline', 'back_midline', 'left_eye', 'right_eye'], markers=['o', '+', 'x', '*'])
             plt.show(block=True)
 
-            print('click to draw two points on the midline of the fish')
+            print('click to draw front point of the midline of the fish')
+            print('click to draw back point of the midline of the fish')
             print('for each eye, click to draw 4 points around the eye')
 
             coordinates = klicky.get_positions()
-            fishmidline_coords = coordinates['midline']
+            fishmidline_coords_front = coordinates['front_midline']
+            fishmidline_coords_back = coordinates['back_midline']
+
+            print(fishmidline_coords_front)
+            print(fishmidline_coords_back)
+
             eye_coords = [coordinates['left_eye'].astype(int), coordinates['right_eye'].astype(int)]
 
             # plotting midline of the fish
@@ -112,21 +118,24 @@ class EyeTracker:
             ax.set_title('midline plotting')
             ax.imshow(video_frame, cmap='Greys_r', vmin=0, vmax=100)
 
-            # Calculate the slope of the fish midline
-            midline_start_x, midline_start_y = fishmidline_coords[0, 0], fishmidline_coords[0, 1]
-            midline_end_x, midline_end_y = fishmidline_coords[1, 0], fishmidline_coords[1, 1]
+            # Calculate the slope of the fish midline # TODO the first clicked point is "start", which might be bad haha
+            midline_front_x, midline_front_y = fishmidline_coords_front[0, 0], fishmidline_coords_front[0, 1]
+            midline_back_x, midline_back_y = fishmidline_coords_back[0, 0], fishmidline_coords_back[0, 1]
 
-            slope = (midline_start_y - midline_end_y) / (midline_start_x - midline_end_x)
-            intercept = (midline_start_x * midline_end_y - midline_end_x * midline_start_y) / (midline_start_x -
-                                                                                               midline_end_x)
+            slope = (midline_front_y - midline_back_y) / (midline_front_x - midline_back_x)
+            intercept = (midline_front_x * midline_back_y - midline_back_x * midline_front_y) / (midline_front_x -
+                                                                                               midline_back_x)
 
+            print(slope)
+            print(intercept
+                  )
             ax.axline([0, intercept], slope=slope, c='r')
             ax.set_xlim([len(video_frame), 0])
             ax.set_ylim([len(video_frame), 0])
             plt.show(block=True)
 
             self.slope_angle = np.rad2deg(
-                np.arctan2((midline_start_y - midline_end_y), (midline_start_x - midline_end_x)))
+                np.arctan2((midline_front_y - midline_back_y), (midline_front_x - midline_back_x)))
             print(f'the fishmidline is {self.slope_angle} degrees')
 
             # plotting the eye selection
