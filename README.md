@@ -4,7 +4,7 @@
 Interactable zebrafish eye tracking package written by Lisa Bauer. 
 This package uses a slightly modified version of [morphsnakes](https://pypi.org/project/morphsnakes/#description).
 
-Includes example data and results which is run by tests/test_tracker.py
+Includes example data and results which is run by tests/test_tracker.py 
 
 ---
 
@@ -21,7 +21,7 @@ pip install -e .
 
 ## Overview
 
-![Overview](examples/Example_screenshot.png)
+![Overview](examples/example_screenshot.png)
 
 *This eyetracker requires you to have a view similar to the one above. Contrast and resolution can be a lot worse, and it should still run quite well.*
 
